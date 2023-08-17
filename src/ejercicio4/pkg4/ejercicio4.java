@@ -9,7 +9,7 @@ package ejercicio4.pkg4;
  *
  * @author Gaming
  */
-public class JavaGui4 {
+public class ejercicio4 {
 
     /**
      * @param args the command line arguments
