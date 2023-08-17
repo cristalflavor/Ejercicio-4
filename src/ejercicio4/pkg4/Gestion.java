@@ -22,7 +22,7 @@ public class Gestion extends javax.swing.JInternalFrame {
     public Gestion() {
         initComponents();
         jComboBoxCarga();
-        //Button5.setIcon(setIcon("/lupa.gif", jButton5));
+        //jButton5.setIcon(setIcon("/lupa.gif", jButton5));
     }
 
     /**
