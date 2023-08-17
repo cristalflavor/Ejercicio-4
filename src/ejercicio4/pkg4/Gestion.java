@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 package ejercicio4.pkg4;
-
 import java.awt.Image;
+import java.util.TreeSet;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -16,7 +17,9 @@ import javax.swing.JTextField;
  * @author Gaming
  */
 public class Gestion extends javax.swing.JInternalFrame {
-
+    
+    public TreeSet<Producto> productos = new TreeSet<Producto>();
+    public Producto pr;
     /**
      * Creates new form BusquedaPorRubro
      */
@@ -24,8 +27,9 @@ public class Gestion extends javax.swing.JInternalFrame {
         initComponents();
         jComboBoxCarga();
         //jButton5.setIcon(setIcon("/lupa.gif", jButton5));
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,11 +49,11 @@ public class Gestion extends javax.swing.JInternalFrame {
         jTFDescripcion = new javax.swing.JTextField();
         jTFPrecio = new javax.swing.JTextField();
         jTFStock = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jCBRubro = new javax.swing.JComboBox<>();
+        jBNuevo = new javax.swing.JButton();
+        jBGuardar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         jLabel1.setText("Gestión de Productos");
@@ -70,29 +74,34 @@ public class Gestion extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jCBRubro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jCBRubroActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Nuevo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBNuevo.setText("Nuevo");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBNuevoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBGuardarActionPerformed(evt);
             }
         });
 
         jButton3.setText("Eliminar");
 
-        jButton4.setText("Salir");
+        jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio4/pkg4/lupa.gif"))); // NOI18N
         jButton5.setText("jButton5");
@@ -110,13 +119,13 @@ public class Gestion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(jButton1)
+                        .addComponent(jBNuevo)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(jBGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                        .addComponent(jButton4))
+                        .addComponent(jBSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -138,7 +147,7 @@ public class Gestion extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jTFStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
                                         .addComponent(jTFPrecio, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCBRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jTFDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -166,26 +175,37 @@ public class Gestion extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCBRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTFStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
+                    .addComponent(jBGuardar)
+                    .addComponent(jBNuevo)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jBSalir))
                 .addGap(0, 21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        pr = new Producto(
+                Integer.parseInt(jTFCodigo.getText()),
+                jTFDescripcion.getText(),
+                Double.parseDouble(jTFPrecio.getText()),
+                Integer.parseInt(jTFStock.getText()),
+                Categoria.valueOf(jCBRubro.getSelectedItem().toString().toUpperCase())
+        );
+        
+        productos.add(pr);
+        
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -195,28 +215,39 @@ public class Gestion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFDescripcionActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jCBRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBRubroActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jCBRubroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         // TODO add your handling code here:
         JTextField[] textFields = {jTFCodigo, jTFDescripcion, jTFPrecio, jTFStock};
         for(JTextField b : textFields){
             b.setText("");
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+        
+        for(Producto p : productos){
+            JOptionPane.showMessageDialog(this, p.getNombre());
+        }
+        
+        
+        
+    }//GEN-LAST:event_jBSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBGuardar;
+    private javax.swing.JButton jBNuevo;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<Categoria> jComboBox1;
+    private javax.swing.JComboBox<Categoria> jCBRubro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -231,9 +262,9 @@ public class Gestion extends javax.swing.JInternalFrame {
 
     
     public void jComboBoxCarga(){
-        jComboBox1.addItem(Categoria.COMESTIBLE);
-        jComboBox1.addItem(Categoria.BAZAR);
-        jComboBox1.addItem(Categoria.LIMPIEZA);
+        jCBRubro.addItem(Categoria.COMESTIBLE);
+        jCBRubro.addItem(Categoria.BAZAR);
+        jCBRubro.addItem(Categoria.LIMPIEZA);
     }
     
     /*public Icon setIcon(String url, JButton btn){

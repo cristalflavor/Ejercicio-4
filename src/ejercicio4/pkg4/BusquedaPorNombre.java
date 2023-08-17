@@ -38,14 +38,14 @@ DefaultTableModel modelo = new DefaultTableModel();
         jLabel2 = new javax.swing.JLabel();
         jtfBusqueda = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtProductos = new javax.swing.JTable();
+        jTProductos = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Busqueda por Nombre");
 
         jLabel2.setText("Ingrese busqueda:");
 
-        jtProductos.setModel(new javax.swing.table.DefaultTableModel(
+        jTProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -56,7 +56,7 @@ DefaultTableModel modelo = new DefaultTableModel();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtProductos);
+        jScrollPane1.setViewportView(jTProductos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,7 +99,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtProductos;
+    private javax.swing.JTable jTProductos;
     private javax.swing.JTextField jtfBusqueda;
     // End of variables declaration//GEN-END:variables
 
@@ -109,7 +109,7 @@ private void cabecera(){
     modelo.addColumn("Nombre");
     modelo.addColumn("Rubro");
     modelo.addColumn("Precio");
-    jtProductos.setModel(modelo);
+    jTProductos.setModel(modelo);
 }
 
 }

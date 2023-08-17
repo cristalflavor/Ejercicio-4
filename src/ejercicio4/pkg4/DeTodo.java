@@ -19,6 +19,7 @@ public static TreeSet<Producto> listaProductos=new TreeSet<>();
      */
     public DeTodo() {
         initComponents();
+        
     }
 
     /**
