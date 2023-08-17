@@ -20,6 +20,7 @@ public class Gestion extends javax.swing.JInternalFrame {
     
     public TreeSet<Producto> productos = new TreeSet<Producto>();
     public Producto pr;
+    
     /**
      * Creates new form BusquedaPorRubro
      */
@@ -54,7 +55,7 @@ public class Gestion extends javax.swing.JInternalFrame {
         jBGuardar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jBBusqueda = new javax.swing.JButton();
 
         jLabel1.setText("Gestión de Productos");
 
@@ -103,11 +104,11 @@ public class Gestion extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio4/pkg4/lupa.gif"))); // NOI18N
-        jButton5.setText("jButton5");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jBBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio4/pkg4/lupa.gif"))); // NOI18N
+        jBBusqueda.setText("jButton5");
+        jBBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jBBusquedaActionPerformed(evt);
             }
         });
 
@@ -124,7 +125,7 @@ public class Gestion extends javax.swing.JInternalFrame {
                         .addComponent(jBGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                         .addComponent(jBSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,32 +144,32 @@ public class Gestion extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel5))))
                                 .addGap(21, 21, 21)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jBBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jTFStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
                                         .addComponent(jTFPrecio, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addComponent(jCBRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTFDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))))
-                        .addGap(12, 12, 12)))
+                                    .addComponent(jTFDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(24, 24, 24)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTFDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                    .addComponent(jTFDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -186,7 +187,7 @@ public class Gestion extends javax.swing.JInternalFrame {
                     .addComponent(jBNuevo)
                     .addComponent(jButton3)
                     .addComponent(jBSalir))
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,9 +208,17 @@ public class Gestion extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jBBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBusquedaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        for(Producto p : productos){
+            if(p.getCodigo() == Integer.parseInt(jTFCodigo.getText())){
+                jTFDescripcion.setText(p.getNombre());
+                jTFPrecio.setText(String.valueOf(p.getPrecio()));
+                jTFStock.setText(String.valueOf(p.getStock()));
+                jCBRubro.setSelectedItem(p.getRubro());
+            }
+        }
+    }//GEN-LAST:event_jBBusquedaActionPerformed
 
     private void jTFDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDescripcionActionPerformed
         // TODO add your handling code here:
@@ -242,11 +251,11 @@ public class Gestion extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBBusqueda;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<Categoria> jCBRubro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
