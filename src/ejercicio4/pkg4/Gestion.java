@@ -88,6 +88,7 @@ public class Gestion extends javax.swing.JInternalFrame {
 
         jButton4.setText("Salir");
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio4/pkg4/lupa.gif"))); // NOI18N
         jButton5.setText("jButton5");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +109,7 @@ public class Gestion extends javax.swing.JInternalFrame {
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                         .addComponent(jButton4))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,9 +135,9 @@ public class Gestion extends javax.swing.JInternalFrame {
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))))
+                        .addGap(12, 12, 12)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -220,7 +221,7 @@ public class Gestion extends javax.swing.JInternalFrame {
         jComboBox1.addItem(Categoria.LIMPIEZA);
     }
     
-    public Icon setIcon(String url, JButton btn){
+    /*public Icon setIcon(String url, JButton btn){
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
         
         int ancho = jButton5.getWidth();
@@ -229,6 +230,6 @@ public class Gestion extends javax.swing.JInternalFrame {
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
         
         return icono;
-    }
+    }*/
 
 }
