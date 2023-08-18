@@ -195,17 +195,57 @@ public class Gestion extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // TODO add your handling code here:
-        
-        pr = new Producto(
-                Integer.parseInt(jTFCodigo.getText()),
-                jTFDescripcion.getText(),
-                Double.parseDouble(jTFPrecio.getText()),
-                Integer.parseInt(jTFStock.getText()),
-                Categoria.valueOf(jCBRubro.getSelectedItem().toString().toUpperCase())
-        );
-        
-        productos.add(pr);
-        
+        String respuesta;
+        String codigo = jTFCodigo.getText();
+        String nombre = jTFDescripcion.getText();
+        String precio = jTFPrecio.getText();
+        String stock  = jTFStock.getText();
+        String rubro  = jCBRubro.getSelectedItem().toString().toUpperCase();
+        if(!codigo.equals("") & !nombre.equals("") & !precio.equals("") & !stock.equals("")){
+            
+            JOptionPane.showMessageDialog(this, "Primer Nivel");
+            
+            if(productos.size() > 0){
+                
+                for(Producto p : productos){
+                    JOptionPane.showMessageDialog(this, "Segundo Nivel");
+                    
+                    if(codigo.equals(String.valueOf(p.getCodigo()))){
+                        JOptionPane.showMessageDialog(this, "Tercero Nivel");
+                        respuesta = JOptionPane.showInputDialog(this, "El número de código ya se encuentra asignado. Sobreescribir?");
+                        
+                        if(respuesta.equalsIgnoreCase("si")){
+                            JOptionPane.showMessageDialog(this, "Cuarto Nivel");
+                            pr = new Producto(
+                        Integer.parseInt(codigo),
+                              nombre,
+                        Double.parseDouble(precio),
+                         Integer.parseInt(stock),
+                         Categoria.valueOf(rubro)
+                            );
+                        
+                            productos.add(pr);
+                        }
+                    }
+                }
+            }else{
+                    JOptionPane.showMessageDialog(this, "Quinto Nivel");
+                    pr = new Producto(
+                  Integer.parseInt(codigo),
+                        nombre,
+                  Double.parseDouble(precio),
+                   Integer.parseInt(stock),
+                   Categoria.valueOf(rubro)
+                    );
+                        
+                    productos.add(pr);
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Sexto Nivel");
+            JOptionPane.showMessageDialog(this, "Faltan campos por rellenar.");
+        }
+        JOptionPane.showMessageDialog(this, "Septimo Nivel");
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBusquedaActionPerformed
