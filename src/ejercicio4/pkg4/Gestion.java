@@ -16,9 +16,9 @@ import javax.swing.JTextField;
  *
  * @author Gaming
  */
-public class Gestion extends javax.swing.JInternalFrame {
+public class Gestion extends javax.swing.JInternalFrame implements Comparable<Producto> {
     
-    public TreeSet<Producto> productos = new TreeSet<Producto>();
+    public static TreeSet<Producto> productos = new TreeSet<>();
     public Producto pr;
     
     /**
@@ -59,6 +59,7 @@ public class Gestion extends javax.swing.JInternalFrame {
 
         setBorder(null);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Gestión de Productos");
 
         jLabel2.setText("Código");
@@ -119,48 +120,42 @@ public class Gestion extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(298, 298, 298)
-                        .addComponent(jBSalir)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5))))
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(156, 156, 156)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel4)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel6)
-                                                    .addComponent(jLabel5))))
-                                        .addGap(21, 21, 21)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jBBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jTFStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                                                .addComponent(jTFPrecio, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addComponent(jCBRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTFDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jBGuardar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton3)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTFStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                                .addComponent(jTFPrecio, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jCBRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +188,7 @@ public class Gestion extends javax.swing.JInternalFrame {
                     .addComponent(jBNuevo)
                     .addComponent(jButton3)
                     .addComponent(jBSalir))
-                .addGap(0, 64, Short.MAX_VALUE))
+                .addGap(0, 63, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,21 +202,19 @@ public class Gestion extends javax.swing.JInternalFrame {
         String precio = jTFPrecio.getText();
         String stock  = jTFStock.getText();
         String rubro  = jCBRubro.getSelectedItem().toString().toUpperCase();
+        
         if(!codigo.equals("") & !nombre.equals("") & !precio.equals("") & !stock.equals("")){
-            
-            JOptionPane.showMessageDialog(this, "Primer Nivel");
-            
+                  
             if(productos.size() > 0){
                 
                 for(Producto p : productos){
-                    JOptionPane.showMessageDialog(this, "Segundo Nivel");
                     
                     if(codigo.equals(String.valueOf(p.getCodigo()))){
-                        JOptionPane.showMessageDialog(this, "Tercero Nivel");
+
                         respuesta = JOptionPane.showInputDialog(this, "El número de código ya se encuentra asignado. Sobreescribir?");
                         
                         if(respuesta.equalsIgnoreCase("si")){
-                            JOptionPane.showMessageDialog(this, "Cuarto Nivel");
+                            
                             pr = new Producto(
                         Integer.parseInt(codigo),
                               nombre,
@@ -231,11 +224,22 @@ public class Gestion extends javax.swing.JInternalFrame {
                             );
                         
                             productos.add(pr);
+                            JOptionPane.showMessageDialog(this, "Producto ingresado con éxito");
                         }
+                    }else{
+                        pr = new Producto(
+                                Integer.parseInt(codigo),
+                                nombre,
+                                Double.parseDouble(precio),
+                                Integer.parseInt(stock),
+                                Categoria.valueOf(rubro)
+                        );
+
+                        productos.add(pr);
                     }
                 }
             }else{
-                    JOptionPane.showMessageDialog(this, "Quinto Nivel");
+
                     pr = new Producto(
                   Integer.parseInt(codigo),
                         nombre,
@@ -245,13 +249,13 @@ public class Gestion extends javax.swing.JInternalFrame {
                     );
                         
                     productos.add(pr);
+                    JOptionPane.showMessageDialog(this, "Producto ingresado con éxito");
             }
             
         }else{
-            JOptionPane.showMessageDialog(this, "Sexto Nivel");
             JOptionPane.showMessageDialog(this, "Faltan campos por rellenar.");
         }
-        JOptionPane.showMessageDialog(this, "Septimo Nivel");
+        JOptionPane.showMessageDialog(this, "El programa no debería llegar aquí en un paso.");
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBusquedaActionPerformed
@@ -332,5 +336,23 @@ public class Gestion extends javax.swing.JInternalFrame {
         
         return icono;
     }*/
+
+    @Override
+public int compareTo(Producto o) {
+  // Primero comparamos el número de código
+  int resultado = pr.getCodigo() - o.getCodigo();
+  // Si son iguales, comparamos el nombre
+  if (resultado == 0) {
+      resultado = Double.compare(pr.getPrecio(), o.getPrecio());
+      // Si son iguales, comparamos el stock
+      if (resultado == 0) {
+        resultado = pr.getStock() - o.getStock();
+        // Si son iguales, comparamos la categoría
+        
+      }
+  }
+  return resultado;
+}
+    
 
 }
